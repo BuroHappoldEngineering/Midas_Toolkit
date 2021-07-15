@@ -54,7 +54,7 @@ namespace BH.Adapter.Adapters.MidasCivil
                 case "KIPS":
                     return force.FromKilopoundForce();
                 default:
-                    Compute.RecordWarning("No firce unit detected, MidasCivil force unit assumed to be set to metres. Therefore no unit conversion will occur. ");
+                    Compute.RecordWarning("No force unit detected, MidasCivil force unit assumed to be set to metres. Therefore no unit conversion will occur. ");
                     break;
             }
 

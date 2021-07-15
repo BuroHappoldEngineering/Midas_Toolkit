@@ -339,17 +339,18 @@ namespace BH.Adapter.Adapters.MidasCivil
         private static string CreateProfile(GeneralisedFabricatedBoxProfile profile, string lengthUnit)
         {
             double webSpacing = 0;
+            double flangeWidth = (profile.Width);
             if (profile.TopLeftCorbelWidth != 0 || profile.TopRightCorbelWidth != 0 || profile.BotLeftCorbelWidth != 0 || profile.BotRightCorbelWidth != 0)
             {
-                webSpacing = (profile.Width - profile.TopLeftCorbelWidth - profile.TopRightCorbelWidth - profile.WebThickness).LengthFromSI(lengthUnit);
+                webSpacing = (profile.Width - profile.WebThickness).LengthFromSI(lengthUnit);
+                flangeWidth = (flangeWidth + profile.TopLeftCorbelWidth + profile.TopRightCorbelWidth);
+
+                Engine.Reflection.Compute.RecordWarning("MidasCivil does not support unequal corbel widths. Therefore the section width has been calculated using the TopCorbelWidths.");
             }
             string midasSectionProperty = "B, 2," +
-                profile.Height.LengthFromSI(lengthUnit) + "," + profile.Width.LengthFromSI(lengthUnit) + "," + profile.WebThickness.LengthFromSI(lengthUnit) + "," +
+                profile.Height.LengthFromSI(lengthUnit) + "," + flangeWidth.LengthFromSI(lengthUnit) + "," + profile.WebThickness.LengthFromSI(lengthUnit) + "," +
                 profile.TopFlangeThickness.LengthFromSI(lengthUnit) + "," + webSpacing + "," + profile.BotFlangeThickness.LengthFromSI(lengthUnit) +
                 ", 0, 0, 0, 0";
-
-            Engine.Reflection.Compute.RecordWarning("MidasCivil does not support unequal corbel widths. Therefore the spacing of the webs " +
-                "have been calculated using the TopLeftCorbelWidth and TopRightCorbelWidth only.");
 
             return midasSectionProperty;
         }

@@ -55,10 +55,13 @@ namespace BH.Adapter.Adapters.MidasCivil
                     webSpacing = System.Convert.ToDouble(sectionProfile[4]).LengthToSI(lengthUnit);
                     webThickness = System.Convert.ToDouble(sectionProfile[2]).LengthToSI(lengthUnit);
                     double corbel;
-                    if (webSpacing < Tolerance.Distance || System.Math.Abs(width / 2 - webSpacing / 2 - webThickness / 2) < Tolerance.Distance)
+                    if (webSpacing < Tolerance.Distance || System.Math.Abs(width - webSpacing - webThickness) < Tolerance.Distance)
                         corbel = 0;
                     else
-                        corbel = (width / 2 - webSpacing / 2 - webThickness / 2).LengthToSI(lengthUnit);
+                    {
+                        corbel = (width / 2 - webSpacing / 2 - webThickness / 2);
+                        width = (webSpacing + webThickness);
+                    }
 
                     topFlangeThickness = System.Convert.ToDouble(sectionProfile[3]).LengthToSI(lengthUnit);
                     bottomFlangeThickness = System.Convert.ToDouble(sectionProfile[5]).LengthToSI(lengthUnit);

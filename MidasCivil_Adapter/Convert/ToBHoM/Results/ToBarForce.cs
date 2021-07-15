@@ -54,8 +54,8 @@ namespace BH.Adapter.MidasCivil
                 System.Convert.ToDouble(delimitted[12]).ForceToSI(forceUnit),
                 System.Convert.ToDouble(delimitted[13]).ForceToSI(forceUnit),
                 System.Convert.ToDouble(delimitted[14]).MomentToSI(forceUnit, lengthUnit),
-                System.Convert.ToDouble(delimitted[15]).MomentToSI(forceUnit, lengthUnit),
-                System.Convert.ToDouble(delimitted[16]).MomentToSI(forceUnit, lengthUnit)
+                -System.Convert.ToDouble(delimitted[15]).MomentToSI(forceUnit, lengthUnit),
+                -System.Convert.ToDouble(delimitted[16]).MomentToSI(forceUnit, lengthUnit)
                 );
             return barforce;
         }
