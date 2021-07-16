@@ -186,6 +186,7 @@
     <Compile Include="Convert\ToMidasCivil\Properties\FromDOFType.cs" />
     <Compile Include="Convert\ToMidasCivil\Properties\FromFixity.cs" />
     <Compile Include="Convert\ToMidasCivil\Properties\FromMaterial.cs" />
+    <Compile Include="Convert\ToMidasCivil\Properties\FromMetadata.cs" />
     <Compile Include="Convert\ToMidasCivil\Properties\FromSectionProperty.cs" />
     <Compile Include="Convert\ToMidasCivil\Properties\FromSpring.cs" />
     <Compile Include="Convert\ToMidasCivil\Properties\FromSupport.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="CRUD\Read\Results\MeshResults.cs" />
     <Compile Include="CRUD\Read\Results\NodeResults.cs" />
     <Compile Include="CRUD\Read\Results\ReadResults.cs" />
+    <Compile Include="CRUD\Read\Properties\ReadMetadata.cs" />
     <Compile Include="PrivateHelpers\AssignBarRelease.cs" />
     <Compile Include="PrivateHelpers\CombineLoads.cs" />
     <Compile Include="PrivateHelpers\CreateAssignmentString.cs" />
@@ -281,6 +283,8 @@
     <Compile Include="CRUD\Delete\Delete.cs" />
     <Compile Include="PrivateHelpers\GetSectionMaterialCombinations.cs" />
     <Compile Include="PrivateHelpers\GetStiffnessVectorModulus.cs" />
+    <Compile Include="PrivateHelpers\SetVersion.cs" />
+    <Compile Include="PrivateHelpers\SetUnits.cs" />
     <Compile Include="Type\NextFreeId.cs" />
     <Compile Include="PrivateHelpers\GetPropertyAssignments.cs" />
     <Compile Include="PrivateHelpers\CompareGroup.cs" />
@@ -313,6 +317,8 @@
     <Compile Include="CRUD\Update\UpdateObjects.cs" />
     <Compile Include="MidasCivilAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CRUD\Create\Properties\Metadata.cs" />
+    <Compile Include="Convert\ToBHoM\Properties\ToMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MidasCivil_Engine\MidasCivil_Engine.csproj">
@@ -334,11 +340,4 @@
 xcopy "$(TargetDir)$(TargetFileName)"  "C:\ProgramData\BHoM\Assemblies" /Y
     </PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

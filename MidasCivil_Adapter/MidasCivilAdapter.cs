@@ -20,12 +20,9 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
-using BH.Adapter;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.IO;
 using BH.Engine.Base.Objects;
 using BH.oM.Adapters.MidasCivil;
 using BH.oM.Structure.Elements;
@@ -97,7 +94,6 @@ namespace BH.Adapter.MidasCivil
                 };
 
                 m_midasCivilVersion = version;
-
                 Execute(new Open() { FileName = filePath });
             }
         }
@@ -114,10 +110,10 @@ namespace BH.Adapter.MidasCivil
         private List<string> m_midasText;
         private string m_directory;
         public string m_midasCivilVersion { get; protected set; }
-        private string m_forceUnit;
-        private string m_lengthUnit;
-        private string m_heatUnit;
-        private string m_temperatureUnit;
+        private string m_forceUnit = "N";
+        private string m_lengthUnit = "M";
+        private string m_heatUnit = "KJ";
+        private string m_temperatureUnit = "C";
         private readonly int m_groupCharacterLimit = 80;
         private readonly int m_sectionPropertyCharacterLimit = 28;
         private readonly int m_materialCharacterLimit = 15;

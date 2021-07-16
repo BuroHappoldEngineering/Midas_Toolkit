@@ -40,7 +40,10 @@ namespace BH.Adapter.MidasCivil
             if (File.Exists(path))
             {
                 sectionText = File.ReadAllLines(path).ToList();
-                CleanString(ref sectionText);
+                if (section != "PROJINFO")
+                {
+                    CleanString(ref sectionText);
+                }
             }
             return sectionText;
         }

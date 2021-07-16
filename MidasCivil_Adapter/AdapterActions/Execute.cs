@@ -200,19 +200,20 @@ namespace BH.Adapter.MidasCivil
                 catch (DirectoryNotFoundException)
                 {
                     Engine.Reflection.Compute.RecordWarning(
-                        "No UNITS.txt file found, MidasCivil model units assumed to be Newtons, metres, kilojoules and celcius. Therefore, no unit conversion will occur when pushing and pulling to/from MidasCivil.");
+                        "No UNIT.txt file found, MidasCivil model units assumed to be Newtons, metres, kilojoules and celcius. Therefore, no unit conversion will occur when pushing and pulling to/from MidasCivil.");
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     Engine.Reflection.Compute.RecordWarning(
-                        "No UNITS.txt file found, MidasCivil model units assumed to be Newtons, metres, kilojoules and celcius. Therefore, no unit conversion will occur when pushing and pulling to/from MidasCivil.");
+                        "No UNIT.txt file found, MidasCivil model units assumed to be Newtons, metres, kilojoules and celcius. Therefore, no unit conversion will occur when pushing and pulling to/from MidasCivil.");
                 }
 
                 Directory.CreateDirectory(m_directory + "\\Results");
 
             }
 
-                return true;
+
+            return true;
         }
 
         /***************************************************/

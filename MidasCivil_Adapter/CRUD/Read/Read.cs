@@ -33,6 +33,7 @@ using BH.oM.Structure.Constraints;
 using BH.oM.Structure.MaterialFragments;
 using BH.oM.Structure.Loads;
 using BH.oM.Structure.Results;
+using BH.oM.Adapters.MidasCivil;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -45,7 +46,9 @@ namespace BH.Adapter.MidasCivil
         protected override IEnumerable<IBHoMObject> IRead(Type type, IList ids = null, ActionConfig actionConfig = null)
         {
             //Choose what to pull out depending on the type. Also see example methods below for pulling out bars and dependencies
-            if (type == typeof(Node))
+            if (type == typeof(Metadata))
+                return ReadMetadata(ids as dynamic);
+            else if (type == typeof(Node))
                 return ReadNodes(ids as dynamic);
             else if (type == typeof(Bar))
                 return ReadBars(ids as dynamic);
