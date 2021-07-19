@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -36,7 +37,7 @@ namespace BH.Adapter.MidasCivil
         {
             string path = m_directory + "\\TextFiles\\" + section + ".txt";
 
-            List<string> propertyText = File.ReadAllLines(path).ToList();
+            List<string> propertyText = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
 
             int index = propertyText.FindIndex(x => x.Contains(propertyName));
 
@@ -74,7 +75,7 @@ namespace BH.Adapter.MidasCivil
 
             propertyText[index] = updatedProperty;
 
-            using (StreamWriter sectionText = File.CreateText(path))
+            using (StreamWriter sectionText = new StreamWriter(path, false, Encoding.GetEncoding(1252), 65536))
             {
                 foreach (string property in propertyText)
                 {

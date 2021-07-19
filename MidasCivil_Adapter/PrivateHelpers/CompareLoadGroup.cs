@@ -22,6 +22,7 @@
 
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -33,7 +34,7 @@ namespace BH.Adapter.MidasCivil
 
         private void CompareLoadGroup(string loadGroup, string path)
         {
-            string[] loadGroups = File.ReadAllLines(path);
+            string[] loadGroups = File.ReadAllLines(path, Encoding.GetEncoding(1252));
             bool existing = false;
 
             if (loadGroups.Any(x => x == loadGroup))

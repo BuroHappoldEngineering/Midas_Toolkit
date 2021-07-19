@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -39,7 +40,7 @@ namespace BH.Adapter.MidasCivil
 
             if (File.Exists(path))
             {
-                sectionText = File.ReadAllLines(path).ToList();
+                sectionText = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
                 CleanString(ref sectionText);
             }
             return sectionText;

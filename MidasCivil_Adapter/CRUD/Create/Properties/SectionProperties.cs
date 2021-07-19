@@ -23,6 +23,7 @@
 using System.IO;
 using System.Collections.Generic;
 using BH.oM.Structure.SectionProperties;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -44,7 +45,7 @@ namespace BH.Adapter.MidasCivil
                     midasSectionProperties.AddRange(midasSectionProperty);
             }
 
-            File.AppendAllLines(path, midasSectionProperties);
+            File.AppendAllLines(path, midasSectionProperties, Encoding.GetEncoding(1252));
 
             return true;
         }

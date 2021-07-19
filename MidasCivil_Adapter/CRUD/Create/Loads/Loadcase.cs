@@ -25,7 +25,7 @@ using BH.oM.Adapters.MidasCivil;
 using BH.oM.Structure.Loads;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -47,7 +47,7 @@ namespace BH.Adapter.MidasCivil
                 midasLoadCases.Add(Adapters.MidasCivil.Convert.FromLoadcase(loadcase));
             }
 
-            File.AppendAllLines(path, midasLoadCases);
+            File.AppendAllLines(path, midasLoadCases, Encoding.GetEncoding(1252));
 
             return true;
         }

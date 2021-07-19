@@ -30,6 +30,7 @@ using BH.oM.Reflection;
 using BH.oM.Adapter.Commands;
 using BH.oM.Structure.Loads;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -78,12 +79,12 @@ namespace BH.Adapter.MidasCivil
             if (!File.Exists(unitFile))
                 File.Copy(unitFile, newDirectory + unitExtension);
             else
-                File.AppendAllLines(newDirectory + unitExtension, new List<string>() { "*UNIT", "N,M,KJ,C" });
+                File.AppendAllLines(newDirectory + unitExtension, new List<string>() { "*UNIT", "N,M,KJ,C" }, Encoding.GetEncoding(1252));
 
             if (!File.Exists(versionFile))
                 File.Copy(versionFile, newDirectory + versionExtension);
             else
-                File.AppendAllLines(newDirectory + versionExtension, new List<string>() { "*VERSION", m_midasCivilVersion });
+                File.AppendAllLines(newDirectory + versionExtension, new List<string>() { "*VERSION", m_midasCivilVersion }, Encoding.GetEncoding(1252));
 
             m_directory = newDirectory;
             Directory.CreateDirectory(newDirectory + "\\Results");
@@ -160,12 +161,12 @@ namespace BH.Adapter.MidasCivil
 
                 if (File.Exists(txtFile))
                 {
-                    m_midasText = File.ReadAllLines(txtFile).ToList();
+                    m_midasText = File.ReadAllLines(txtFile, Encoding.GetEncoding(1252)).ToList();
                     SetSectionText();
                 }
                 else if (File.Exists(mctFile))
                 {
-                    m_midasText = File.ReadAllLines(mctFile).ToList();
+                    m_midasText = File.ReadAllLines(mctFile, Encoding.GetEncoding(1252)).ToList();
                     SetSectionText();
                 }
 

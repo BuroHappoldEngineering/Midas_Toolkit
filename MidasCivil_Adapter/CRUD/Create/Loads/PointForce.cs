@@ -26,6 +26,7 @@ using BH.oM.Structure.Loads;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -54,7 +55,7 @@ namespace BH.Adapter.MidasCivil
 
                 RemoveEndOfDataString(PointLoadPath);
                 CompareLoadGroup(midasLoadGroup, loadGroupPath);
-                File.AppendAllLines(PointLoadPath, midasPointLoads);
+                File.AppendAllLines(PointLoadPath, midasPointLoads, Encoding.GetEncoding(1252));
             }
 
             return true;

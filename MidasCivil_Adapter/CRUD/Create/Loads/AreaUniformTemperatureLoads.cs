@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.IO;
 using BH.Engine.Adapter;
 using BH.oM.Adapters.MidasCivil;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -62,7 +63,7 @@ namespace BH.Adapter.MidasCivil
 
                 CompareLoadGroup(midasLoadGroup, loadGroupPath);
                 RemoveEndOfDataString(FEMeshLoadPath);
-                File.AppendAllLines(FEMeshLoadPath, midasTemperatureLoads);
+                File.AppendAllLines(FEMeshLoadPath, midasTemperatureLoads, Encoding.GetEncoding(1252));
             }
 
             return true;

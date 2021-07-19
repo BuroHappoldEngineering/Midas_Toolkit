@@ -66,7 +66,7 @@ namespace BH.Adapter.MidasCivil
                 }
                 CompareLoadGroup(midasLoadGroup, loadGroupPath);
                 RemoveEndOfDataString(feMeshLoadPath);
-                File.AppendAllText(feMeshLoadPath, midasTemperatureLoads.ToString());
+                File.AppendAllText(feMeshLoadPath, midasTemperatureLoads.ToString(), Encoding.GetEncoding(1252));
             }
             return true;
         }

@@ -23,6 +23,7 @@
 using System.IO;
 using System.Collections.Generic;
 using BH.oM.Structure.Elements;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -45,7 +46,7 @@ namespace BH.Adapter.MidasCivil
                 midasRigidLinks.Add(Adapters.MidasCivil.Convert.FromRigidLink(link));
             }
 
-            File.AppendAllLines(path, midasRigidLinks);
+            File.AppendAllLines(path, midasRigidLinks, Encoding.GetEncoding(1252));
 
             return true;
         }

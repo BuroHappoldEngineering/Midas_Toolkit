@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -46,7 +47,7 @@ namespace BH.Adapter.MidasCivil
 
                     List<int> indices = stringIndex.Select(int.Parse).ToList();
 
-                    List<string> thicknesses = File.ReadAllLines(path).ToList();
+                    List<string> thicknesses = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
 
                     List<int> thicknessIndexes = new List<int>();
 
@@ -83,8 +84,7 @@ namespace BH.Adapter.MidasCivil
 
                     thicknesses = thicknesses.Where(x => !string.IsNullOrEmpty(x)).ToList();
 
-                    File.Delete(path);
-                    File.WriteAllLines(path, thicknesses.ToArray());
+                    WriteToANSI(path, thicknesses);
                 }
             }
             return success;

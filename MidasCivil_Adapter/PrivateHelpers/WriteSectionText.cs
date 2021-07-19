@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Security.Cryptography.X509Certificates;
 
 namespace BH.Adapter.MidasCivil
@@ -37,7 +38,7 @@ namespace BH.Adapter.MidasCivil
         {
             string path = m_directory + "\\TextFiles\\" + section + ".txt";
 
-            using (StreamWriter sectionFile = File.CreateText(path))
+            using (StreamWriter sectionFile = new StreamWriter(path, false, Encoding.GetEncoding(1252), 65536))
             {
                 string trimText = "";
                 foreach (string text in sectionText)
@@ -59,7 +60,7 @@ namespace BH.Adapter.MidasCivil
         {
             string path = subDirectory + "\\" + section + ".txt";
 
-            using (StreamWriter sectionFile = File.CreateText(path))
+            using (StreamWriter sectionFile = new StreamWriter(path, false, Encoding.GetEncoding(1252), 65536))
             {
                 string trimText = "";
                 foreach (string text in sectionText)

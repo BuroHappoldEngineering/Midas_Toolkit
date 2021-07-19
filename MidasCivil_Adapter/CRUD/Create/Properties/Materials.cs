@@ -23,6 +23,7 @@
 using System.IO;
 using System.Collections.Generic;
 using BH.oM.Structure.MaterialFragments;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -42,7 +43,7 @@ namespace BH.Adapter.MidasCivil
                 midasMaterials.Add(Adapters.MidasCivil.Convert.FromMaterial(material, m_forceUnit, m_lengthUnit, m_temperatureUnit, m_materialCharacterLimit));
             }
 
-            File.AppendAllLines(path, midasMaterials);
+            File.AppendAllLines(path, midasMaterials, Encoding.GetEncoding(1252));
 
             return true;
         }

@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -46,7 +47,7 @@ namespace BH.Adapter.MidasCivil
 
             if (!File.Exists(path))
             {
-                using (StreamWriter sectionText = File.CreateText(path))
+                using (StreamWriter sectionText = new StreamWriter(path, false, Encoding.GetEncoding(1252), 65536))
                 {
                     if (section != "SELFWEIGHT")
                     {
@@ -57,12 +58,12 @@ namespace BH.Adapter.MidasCivil
             }
             else
             {
-                List<string> readSection = File.ReadAllLines(path).ToList();
+                List<string> readSection = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
                 if (readSection.Count != 0)
                 {
                     if (!(readSection[0].Contains("*" + section)))
                     {
-                        using (StreamWriter sectionText = File.CreateText(path))
+                        using (StreamWriter sectionText = new StreamWriter(path, false, Encoding.GetEncoding(1252), 65536))
                         {
                             if (section != "SELFWEIGHT")
                             {

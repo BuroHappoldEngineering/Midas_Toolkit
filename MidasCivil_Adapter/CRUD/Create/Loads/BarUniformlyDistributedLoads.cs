@@ -27,6 +27,7 @@ using BH.oM.Geometry;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -88,7 +89,7 @@ namespace BH.Adapter.MidasCivil
 
                 CompareLoadGroup(midasLoadGroup, loadGroupPath);
                 RemoveEndOfDataString(barLoadPath);
-                File.AppendAllLines(barLoadPath, midasBarLoads);
+                File.AppendAllLines(barLoadPath, midasBarLoads, Encoding.GetEncoding(1252));
             }
             return true;
         }

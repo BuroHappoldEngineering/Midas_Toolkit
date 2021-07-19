@@ -281,6 +281,7 @@
     <Compile Include="CRUD\Delete\Delete.cs" />
     <Compile Include="PrivateHelpers\GetSectionMaterialCombinations.cs" />
     <Compile Include="PrivateHelpers\GetStiffnessVectorModulus.cs" />
+    <Compile Include="Type\WriteToANSI.cs" />
     <Compile Include="Type\NextFreeId.cs" />
     <Compile Include="PrivateHelpers\GetPropertyAssignments.cs" />
     <Compile Include="PrivateHelpers\CompareGroup.cs" />

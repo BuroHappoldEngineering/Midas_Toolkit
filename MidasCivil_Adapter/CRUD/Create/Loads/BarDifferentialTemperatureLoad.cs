@@ -29,6 +29,7 @@ using BH.oM.Structure.Elements;
 using System.Collections.Generic;
 using System.IO;
 using BH.oM.Structure.SectionProperties;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -69,7 +70,7 @@ namespace BH.Adapter.MidasCivil
                 }
                 CompareLoadGroup(midasLoadGroup, loadGroupPath);
                 RemoveEndOfDataString(barLoadPath);
-                File.AppendAllLines(barLoadPath, midasTemperatureLoads);
+                File.AppendAllLines(barLoadPath, midasTemperatureLoads, Encoding.GetEncoding(1252));
             }
             return true;
         }

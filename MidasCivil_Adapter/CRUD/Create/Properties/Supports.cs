@@ -26,6 +26,7 @@ using BH.Engine.Structure;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -63,8 +64,8 @@ namespace BH.Adapter.MidasCivil
                 }
             }
 
-            File.AppendAllLines(supportPath, midasSupports);
-            File.AppendAllLines(springPath, midasSprings);
+            File.AppendAllLines(supportPath, midasSupports, Encoding.GetEncoding(1252));
+            File.AppendAllLines(springPath, midasSprings, Encoding.GetEncoding(1252));
 
             return true;
         }

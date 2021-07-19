@@ -21,6 +21,7 @@
  */
 
 using System.IO;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -32,7 +33,7 @@ namespace BH.Adapter.MidasCivil
 
         private void CompareGroup(string group, string path)
         {
-            string[] groups = File.ReadAllLines(path);
+            string[] groups = File.ReadAllLines(path, Encoding.GetEncoding(1252));
             bool existing = false;
 
             for (int i = 0; i < groups.Length; i++)

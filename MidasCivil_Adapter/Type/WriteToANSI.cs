@@ -20,36 +20,20 @@
  * along with this code. If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.      
  */
 
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
     public partial class MidasCivilAdapter
     {
-        /***************************************************/
-        /**** Private Methods                           ****/
-        /***************************************************/
-
-        private void RemoveEndOfDataString(string path)
+        private static void WriteToANSI(string path, List<string> pushItems)
         {
-            string[] loads = File.ReadAllLines(path, Encoding.GetEncoding(1252));
-
-            for (int i = 0; i < loads.Length; i++)
-            {
-                if (loads[i].Contains("; End of data"))
-                    loads[i] = "";
-            }
-
-            loads = loads.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-
-            File.Delete(path);
-            File.AppendAllLines(path, loads);
+            StreamWriter writer = new StreamWriter(path, false, Encoding.GetEncoding(1252), 65536);
+            writer.Write(pushItems.ToArray());
+            writer.Close();
         }
-
-        /***************************************************/
-
     }
 }
 

@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -46,7 +47,7 @@ namespace BH.Adapter.MidasCivil
 
                     List<int> indices = stringIndex.Select(int.Parse).ToList();
 
-                    List<string> elements = File.ReadAllLines(path).ToList();
+                    List<string> elements = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
                     List<int> elementIndexes = new List<int>();
 
                     foreach (string element in elements)
@@ -74,8 +75,7 @@ namespace BH.Adapter.MidasCivil
 
                     elements = elements.Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
 
-                    File.Delete(path);
-                    File.WriteAllLines(path, elements.ToArray());
+                    WriteToANSI(path, elements);
                 }
             }
             return success;

@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using BH.oM.Structure.Constraints;
 using BH.Engine.Structure;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -50,7 +51,7 @@ namespace BH.Adapter.MidasCivil
                 }
             }
 
-            File.AppendAllLines(path, midasBarReleases);
+            File.AppendAllLines(path, midasBarReleases, Encoding.GetEncoding(1252));
 
             return true;
         }

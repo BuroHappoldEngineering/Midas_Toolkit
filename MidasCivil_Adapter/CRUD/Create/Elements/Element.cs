@@ -27,6 +27,7 @@ using BH.Engine.Structure;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -58,7 +59,7 @@ namespace BH.Adapter.MidasCivil
                 midasElements.Add(Adapters.MidasCivil.Convert.FromBar(bar));
             }
 
-            File.AppendAllLines(path, midasElements);
+            File.AppendAllLines(path, midasElements, Encoding.GetEncoding(1252));
 
             return true;
         }
@@ -79,7 +80,7 @@ namespace BH.Adapter.MidasCivil
 
             CreateGroups(meshes);
 
-            File.AppendAllLines(path, midasElements);
+            File.AppendAllLines(path, midasElements, Encoding.GetEncoding(1252));
 
             return true;
         }

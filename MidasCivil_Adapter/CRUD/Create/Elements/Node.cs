@@ -27,7 +27,7 @@ using BH.oM.Structure.Elements;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -61,7 +61,7 @@ namespace BH.Adapter.MidasCivil
                 midasNodes.Add(Adapters.MidasCivil.Convert.FromNode(node, m_lengthUnit));
             }
 
-            File.AppendAllLines(nodePath, midasNodes);
+            File.AppendAllLines(nodePath, midasNodes, Encoding.GetEncoding(1252));
 
             return true;
         }

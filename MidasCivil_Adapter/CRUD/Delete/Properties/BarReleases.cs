@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -43,7 +44,7 @@ namespace BH.Adapter.MidasCivil
                 if (File.Exists(path))
                 {
                     List<string> names = ids.Cast<string>().ToList();
-                    List<string> releases = File.ReadAllLines(path).ToList();
+                    List<string> releases = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
                     List<string> releaseNames = new List<string>();
 
                     for (int i = 0; i < releases.Count; i++)
@@ -80,8 +81,7 @@ namespace BH.Adapter.MidasCivil
 
                     releases = releases.Where(x => !string.IsNullOrEmpty(x)).ToList();
 
-                    File.Delete(path);
-                    File.WriteAllLines(path, releases.ToArray());
+                    WriteToANSI(path, releases);
                 }
             }
             return success;

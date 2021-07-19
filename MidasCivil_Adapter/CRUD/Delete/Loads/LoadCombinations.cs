@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -44,7 +45,7 @@ namespace BH.Adapter.MidasCivil
                 {
                     List<string> names = ids.Cast<string>().ToList();
 
-                    List<string> loadCombinations = File.ReadAllLines(path).ToList();
+                    List<string> loadCombinations = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
 
                     List<string> loadCombinationNames = new List<string>();
 
@@ -82,8 +83,7 @@ namespace BH.Adapter.MidasCivil
 
                     loadCombinations = loadCombinations.Where(x => !string.IsNullOrEmpty(x)).ToList();
 
-                    File.Delete(path);
-                    File.WriteAllLines(path, loadCombinations.ToArray());
+                    WriteToANSI(path, loadCombinations);
                 }
             }
             return success;

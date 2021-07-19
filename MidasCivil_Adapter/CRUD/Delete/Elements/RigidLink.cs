@@ -23,6 +23,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BH.Adapter.MidasCivil
 {
@@ -43,7 +44,7 @@ namespace BH.Adapter.MidasCivil
                 if (File.Exists(path))
                 {
                     List<string> names = ids.Cast<string>().ToList();
-                    List<string> links = File.ReadAllLines(path).ToList();
+                    List<string> links = File.ReadAllLines(path, Encoding.GetEncoding(1252)).ToList();
                     List<string> linkNames = new List<string>();
 
                     foreach (string link in links)
@@ -78,8 +79,7 @@ namespace BH.Adapter.MidasCivil
 
                     links = links.Where(x => !string.IsNullOrEmpty(x)).ToList();
 
-                    File.Delete(path);
-                    File.WriteAllLines(path, links.ToArray());
+                    WriteToANSI(path, links);
                 }
             }
             return success;
